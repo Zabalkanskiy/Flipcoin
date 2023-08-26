@@ -7,6 +7,7 @@
     <string name="result">Your result</string>
     <string name="background">Background</string>
     <string name="footbal">Footbal Image</string>
-    <string name="result_Button">Your Score</string>
-    <string name="beat_the_bot">Beat the bot in rock, paper, scissors</string>
+    <string name="result_Button">Start again</string>
+    <string name="flip_a_coin">Flip a coin try your luck</string>
+    <string name="your_win">Your score: </string>
 </resources>

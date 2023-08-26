@@ -1,4 +1,4 @@
-package com.example.scaffold
+package com.example.money
 
 import android.content.Intent
 import android.graphics.Color
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.scaffold.R
 
 class ResultActivity : AppCompatActivity() {
     lateinit var resultTextView: TextView

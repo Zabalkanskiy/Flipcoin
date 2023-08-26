@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "265325505819",
-    "project_id": "scaffold-ed75c",
-    "storage_bucket": "scaffold-ed75c.appspot.com"
+    "project_number": "690778276570",
+    "project_id": "scaffold-a8654",
+    "storage_bucket": "scaffold-a8654.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:265325505819:android:c4d13c4b4401814d97f7be",
+        "mobilesdk_app_id": "1:690778276570:android:97f80c1703787f0f5fdbe3",
         "android_client_info": {
-          "package_name": "com.example.scaffold"
+          "package_name": "com.example.money"
         }
       },
       "oauth_client": [
         {
-          "client_id": "265325505819-cmn46ac3jcd8apjhfa5ngunmeoh417c2.apps.googleusercontent.com",
+          "client_id": "690778276570-vb1cd63741ijdi1dn8jmsmc3ammdjgi8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBmfruopoqLkkGvD43RKQtRo45fdg2Bx1c"
+          "current_key": "AIzaSyBUz-ZXoWXV8I70JUYGyy6uKThXxlp5yiA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "265325505819-cmn46ac3jcd8apjhfa5ngunmeoh417c2.apps.googleusercontent.com",
+              "client_id": "690778276570-vb1cd63741ijdi1dn8jmsmc3ammdjgi8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

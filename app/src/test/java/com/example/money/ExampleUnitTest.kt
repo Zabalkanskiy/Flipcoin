@@ -1,4 +1,4 @@
-package com.example.scaffold
+package com.example.money
 
 import org.junit.Test
 

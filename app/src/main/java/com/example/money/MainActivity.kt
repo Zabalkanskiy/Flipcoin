@@ -1,7 +1,9 @@
-package com.example.scaffold
+package com.example.money
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.media.Image
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
@@ -9,16 +11,23 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.os.Parcelable
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.webkit.CookieManager
 import android.webkit.ValueCallback
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import com.example.scaffold.R
 import com.google.firebase.remoteconfig.BuildConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
@@ -31,6 +40,18 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
     //your view connected
     lateinit var resultButton: Button
+    lateinit var headMoney: ImageButton
+    lateinit var tailMoney: ImageButton
+    lateinit var imageMoney: ImageView
+    lateinit var textTail: TextView
+    lateinit var textHead: TextView
+    lateinit var yourScore: TextView
+    lateinit var screenImageView: ImageView
+    var gameString: String = ""
+    var playerScore: Int = 0
+    var headScore: Int = 0
+    var tailScore :Int = 0
+
 
     var webView: WebView? = null
     private var mUploadMessage: ValueCallback<Uri?>? = null
@@ -118,13 +139,98 @@ class MainActivity : AppCompatActivity() {
         //code game paste your code
         setContentView(R.layout.activity_main)
         resultButton = findViewById(R.id.result_button)
+        headMoney = findViewById(R.id.first_image_button)
+        tailMoney = findViewById(R.id.second_image_button)
+        imageMoney = findViewById(R.id.image_money)
+        textHead = findViewById(R.id.avers)
+        textTail =findViewById(R.id.revers)
+        yourScore = findViewById(R.id.your_win)
+        screenImageView = findViewById(R.id.actyvityImageView)
+        screenImageView.setImageResource(R.drawable.water)
+        textHead.setTextColor(Color.WHITE)
+        textTail.setTextColor(Color.WHITE)
+
+        headMoney.setOnClickListener {
+            if(gameString == "HEAD"){
+
+                headScore +=1
+                playerScore +=1
+                yourScore.text = " ${playerScore.toString()}"
+                yourScore.setTextColor(Color.GREEN)
+                textHead.text = "Head: ${headScore}"
+            }else{
+                imageMoney.visibility = View.VISIBLE
+                tailScore +=1
+                textTail.text = "Tail: ${tailScore}"
+            }
+
+            headMoney.isEnabled = false
+            tailMoney.isEnabled = false
+            imageMoney.visibility = View.VISIBLE
+            Handler(Looper.getMainLooper()).postDelayed({
+                updateImage()
+                //    view.setBackgroundColor(Color.WHITE)
+            }, 2000)
+
+        }
+
+        tailMoney.setOnClickListener {
+            if(gameString =="EAGLE" ){
+                tailScore +=1
+                playerScore +=1
+                textTail.text = "Tail: ${tailScore}"
+                yourScore.text =" ${playerScore.toString()}"
+                yourScore.setTextColor(Color.GREEN)
+            }else{
+                headScore +=1
+
+
+
+                textHead.text = "Head: ${headScore}"
+            }
+            headMoney.isEnabled = false
+            tailMoney.isEnabled = false
+
+            imageMoney.visibility = View.VISIBLE
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                updateImage()
+                //    view.setBackgroundColor(Color.WHITE)
+            }, 2000)
+        }
         resultButton.setOnClickListener{view ->
-            val intent = Intent(this, ResultActivity::class.java)
+            //val intent = Intent(this, MainActivity::class.java)
             //add information in intent
             //intent.putExtra("SOMEVALUE", 0)
-            startActivity(intent)
-            finish()
+            //startActivity(intent)
+            //finish()
+            yourScore.text = "0"
+            textTail.text = "Tail: 0"
+            textHead.text = "Head: 0"
         }
+        updateImage()
+    }
+    fun updateImage(){
+        val result = (0 until 2).random()
+        if(result==1){
+            imageMoney.setImageResource(R.drawable.quarter_dollar_eagle)
+            imageMoney.visibility = View.INVISIBLE
+            gameString = "EAGLE"
+
+
+
+        } else {
+            imageMoney.setImageResource(R.drawable.quarter_dollar_head)
+            imageMoney.visibility = View.INVISIBLE
+            gameString = "HEAD"
+
+        }
+
+        headMoney.isEnabled = true
+        tailMoney.isEnabled = true
+
+        yourScore.setTextColor(Color.WHITE)
+
     }
     fun viewWebActivity(savedInstanceState: Bundle?, remoteString: String){
 

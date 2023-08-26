@@ -1,3 +1,3 @@
-package com.example.scaffold
+package com.example.money
 
 data class Question(val resFootbalImage: Int)
